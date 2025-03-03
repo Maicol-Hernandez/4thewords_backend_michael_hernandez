@@ -1,2 +1,8 @@
 fastapi[standard]>=0.113.0,<0.114.0
+# uvicorn>=0.15.0
 pydantic>=2.7.0,<3.0.0
+sqlmodel>=0.0.19,<0.0.23
+python-dotenv>=0.19.0,<1.0.1
+mysqlclient==2.2.7
+asyncmy>=0.2.0,<0.2.2
+alembic>=1.9.0,<1.14.1
