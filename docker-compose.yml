@@ -27,7 +27,10 @@ services:
     image: "mysql/mysql-server:8.0"
     container_name: ${APP_NAME}_mysql
     restart: always
+    command: --tls-version=TLSv1.2,TLSv1.3
+      --host-cache-size=0
     environment:
+      MYSQL_SSL_MODE: DISABLED
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
@@ -58,6 +61,7 @@ services:
     ports:
       - "8081:80"
     environment:
+      SERVER_NAME: localhost
       PMA_HOST: mysql
       PMA_PORT: 3306
       PMA_USER: ${DB_USER}
