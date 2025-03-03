@@ -1,17 +1,18 @@
 services:
-  app:
+  fastapi.test:
     build:
       context: .
       dockerfile: ./docker/dev/Dockerfile
     container_name: fastapi-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: fastapi.test
+      SERVICE_TAGS: fastapi.dev
     ports:
       - "8080:80"
     volumes:
       - ./app:/code/app
-    environment:
-      - ENVIRONMENT=${ENVIRONMENT}
-      - RELOAD=${RELOAD}
-      - DB_URL=${DB_URL}
     depends_on:
       mysql:
         condition: service_healthy
@@ -23,15 +24,14 @@ services:
       - app-network
 
   mysql:
-    image: mysql:8.0.27
-    container_name: mysql
+    image: "mysql/mysql-server:8.0"
+    container_name: ${APP_NAME}_mysql
     restart: always
     environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_HOST: "%"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
@@ -46,30 +46,32 @@ services:
           "ping",
           "-h",
           "localhost",
-          "-u$$MYSQL_USER",
-          "-p$$MYSQL_PASSWORD",
+          "-u$$DB_USER",
+          "-p$$DB_PASSWORD",
         ]
       interval: 5s
       timeout: 10s
-      retries: 10
+      retries: 3
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    depends_on:
-      - mysql
     ports:
       - "8081:80"
     environment:
       PMA_HOST: mysql
-      PMA_USER: ${MYSQL_USER}
-      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+      MEMORY_LIMIT: 1G
+      UPLOAD_LIMIT: 1G
+      MAX_EXECUTION_TIME: 3600
+    depends_on:
+      - mysql
     networks:
       - app-network
-
-volumes:
-  mysql_data:
-
 networks:
   app-network:
     driver: bridge
+volumes:
+  mysql_data:
+    driver: local
