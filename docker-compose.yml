@@ -1,0 +1,14 @@
+# docker-compose.yml
+services:
+  test-app:
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    container_name: test-app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/code/app
+    environment:
+      - ENVIRONMENT=dev
+      - RELOAD=1
