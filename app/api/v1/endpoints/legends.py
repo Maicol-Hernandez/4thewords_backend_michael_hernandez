@@ -16,7 +16,7 @@ async def create_legend(legend_data: LegendCreate, image: UploadFile = File(...)
     return service.create_legend(legend_data.dict(), image_url)
 
 @router.get("/", response_model=list[LegendResponse])
-def get_legends(category: Optional[str] = None, province: Optional[str] = None, db: Session = Depends(get_db)):
-    service = LegendService(db)
-    print(category, province, db, service)
+def get_legends(category: Optional[str] = None, province: Optional[str] = None, session: Session = Depends(get_db)):
+    service = LegendService(session=session)
+    
     return service.get_legends({"category": category, "province": province})
