@@ -1,5 +1,5 @@
 from sqlmodel import Session
-from app.models import Hero
+from app.models.hero import Hero
 
 class HeroService:
     def __init__(self, session: Session):
