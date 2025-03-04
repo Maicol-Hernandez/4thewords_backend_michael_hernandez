@@ -14,8 +14,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./app:/code/app
-      - ./static:/app/static
+      - .:/app
+      - /app/static
     depends_on:
       mysql:
         condition: service_healthy

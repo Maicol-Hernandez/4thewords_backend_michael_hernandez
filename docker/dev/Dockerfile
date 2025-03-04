@@ -1,6 +1,6 @@
 FROM python:3.9
 
-WORKDIR /code
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     default-libmysqlclient-dev \
@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-COPY ./app /code/app
+COPY . .
 
 CMD ["fastapi", "dev", "app/main.py", "--port", "80"]
