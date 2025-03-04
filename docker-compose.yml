@@ -9,6 +9,8 @@ services:
     environment:
       SERVICE_NAME: fastapi.test
       SERVICE_TAGS: fastapi.dev
+    env_file:
+      - .env
     ports:
       - "8080:80"
     volumes:
