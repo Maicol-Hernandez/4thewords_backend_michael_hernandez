@@ -1,25 +1,13 @@
-from typing import Union
-from fastapi import FastAPI, Depends
-from sqlmodel import Session
-from app.models import Hero, Team
-from app.database import create_db_and_tables, get_session
+from fastapi import FastAPI
+from app.core.database import create_db_and_tables
+from app.api.v1.routers import heroes #, items
 
 app = FastAPI()
+
+# Incluir routers
+app.include_router(heroes.router)
+# app.include_router(items.router)
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-    
-@app.get("/heroes")
-def get_heroes(session: Session = Depends(get_session)):
-    heroes = session.query(Hero).all()
-    return heroes
-    
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
