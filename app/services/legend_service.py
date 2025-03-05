@@ -25,9 +25,9 @@ class LegendService:
     
     def delete_legend(self, legend_id: int):
         legend = self.session.get(Legend, legend_id)
-        if legend is None:
+        if not legend:
             raise HTTPException(status_code=404, detail="Legend not found")
+        
         self.session.delete(legend)
         self.session.commit()
-        
         return True

@@ -16,4 +16,6 @@ class LegendResponse(LegendCreate):
     id: int
     image_url: str
     created_at: datetime
+    updated_at: Optional[datetime]
+    # deleted_at: Optional[datetime]
     
