@@ -1,3 +1,4 @@
+import os
 from sqlmodel import Session
 from app.models.legend import Legend
 from fastapi import HTTPException
@@ -23,6 +24,27 @@ class LegendService:
                         
         return query.all()
     
+    def update_legend(self, legend_id: int, legend_data: dict, image_url: str) -> Legend:
+        legend = self.session.get(Legend, legend_id)
+        if not legend:
+            raise HTTPException(status_code=404, detail="Legend not found")
+        
+        old_image_url = legend.image_url
+        legend.image_url = image_url
+        
+        for key, value in legend_data.items():
+            setattr(legend, key, value)
+            
+        self.session.commit()
+        self.session.refresh(legend)
+        
+        # Elimina la imagen antigua
+        print("condicional",old_image_url and old_image_url != image_url)
+        if old_image_url and old_image_url != image_url:
+            self._delete_image(old_image_url)
+        
+        return legend
+    
     def delete_legend(self, legend_id: int):
         legend = self.session.get(Legend, legend_id)
         if not legend:
@@ -31,3 +53,19 @@ class LegendService:
         self.session.delete(legend)
         self.session.commit()
         return True
+    
+    def _delete_image(self, image_url: str):
+        """Elimina un archivo de imagen del sistema de archivos."""
+        filename = os.path.basename(image_url)
+        static_dir = os.path.abspath("app/static")
+        file_path = os.path.join(static_dir, filename)
+        
+        try:
+            if os.path.exists(file_path):
+                os.remove(file_path)
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Error al eliminar la imagen: {str(e)}"
+            )
+    
