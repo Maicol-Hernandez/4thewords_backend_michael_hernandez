@@ -13,6 +13,7 @@ class LegendBase(SQLModel):
     district: str = Field(max_length=50)
     
 class Legend(LegendBase, table=True):
+    __tablename__ = "legends"
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: Optional[date] = Field(default_factory=date.today)
     updated_at: Optional[date]

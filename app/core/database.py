@@ -1,9 +1,10 @@
+import os
 from sqlmodel import SQLModel, create_engine, Session
 from app.core.config import settings
 
 
 # Use asyncmy for asynchronous operations
-DATABASE_URL = f"mysql+mysqldb://{settings.db_user}:{settings.db_password}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
+DATABASE_URL = os.getenv("DATABASE_URL", f"mysql+mysqldb://{settings.db_user}:{settings.db_password}@{settings.db_host}:{settings.db_port}/{settings.db_name}")
 
 # Asynchronous driver (app)
 engine = create_engine(DATABASE_URL, echo=True)
