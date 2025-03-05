@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, Field, Relationship
-from datetime import date
+from datetime import date, datetime
 from typing import Optional, List
 
 class LegendBase(SQLModel):
@@ -16,6 +16,6 @@ class Legend(LegendBase, table=True):
     __tablename__ = "legends"
     
     id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: Optional[date] = Field(default_factory=date.today)
-    updated_at: Optional[date] = Field(default_factory=date.today)
-    deleted_at: Optional[date] = Field(default=None)
+    created_at: Optional[datetime] = Field(default_factory=datetime.today)
+    updated_at: Optional[datetime] = Field(default_factory=datetime.today)
+    deleted_at: Optional[datetime] = Field(default=None)

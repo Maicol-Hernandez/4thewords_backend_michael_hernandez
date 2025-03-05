@@ -16,11 +16,11 @@ class LegendService:
     def get_legends(self, filters: dict):
         query = self.session.query(Legend)
         
-        if "category" in filters:
+        if filters.get("category") is not None:
             query = query.filter(Legend.category == filters["category"])
-        if "province" in filters:
+        if filters.get("province") is not None:
             query = query.filter(Legend.province == filters["province"])
-            
+                        
         return query.all()
     
     def delete_legend(self, legend_id: int):
