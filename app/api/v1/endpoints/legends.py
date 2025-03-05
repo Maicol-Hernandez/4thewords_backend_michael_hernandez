@@ -16,7 +16,15 @@ async def create_legend(legend_data: LegendCreate, image: UploadFile = File(...)
     return service.create_legend(legend_data.dict(), image_url)
 
 @router.get("/", response_model=list[LegendResponse])
-def get_legends(category: Optional[str] = None, province: Optional[str] = None, session: Session = Depends(get_db)):
-    service = LegendService(session=session)
+def get_legends(category: Optional[str] = None, province: Optional[str] = None, db: Session = Depends(get_db)):
+    service = LegendService(session=db)
     
     return service.get_legends({"category": category, "province": province})
+
+@router.delete("/{id}", status_code=204)
+def delete_legend(id: int, db: Session = Depends(get_db)):
+    service = LegendService(session=db)
+    try:
+        service.delete_legend(id)
+    except HTTPException as error:
+        raise error

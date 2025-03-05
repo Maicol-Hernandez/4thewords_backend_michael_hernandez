@@ -14,7 +14,8 @@ class LegendBase(SQLModel):
     
 class Legend(LegendBase, table=True):
     __tablename__ = "legends"
+    
     id: Optional[int] = Field(default=None, primary_key=True)
     created_at: Optional[date] = Field(default_factory=date.today)
-    updated_at: Optional[date]
-    deleted_at: Optional[date]
+    updated_at: Optional[date] = Field(default_factory=date.today)
+    deleted_at: Optional[date] = Field(default=None)

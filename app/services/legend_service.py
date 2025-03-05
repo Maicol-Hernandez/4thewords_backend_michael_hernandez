@@ -1,5 +1,6 @@
 from sqlmodel import Session
 from app.models.legend import Legend
+from fastapi import HTTPException
 
 class LegendService:
     def __init__(self, session: Session):
@@ -22,3 +23,11 @@ class LegendService:
             
         return query.all()
     
+    def delete_legend(self, legend_id: int):
+        legend = self.session.get(Legend, legend_id)
+        if legend is None:
+            raise HTTPException(status_code=404, detail="Legend not found")
+        self.session.delete(legend)
+        self.session.commit()
+        
+        return True
