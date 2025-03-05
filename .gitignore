@@ -88,6 +88,7 @@ Desktop.ini
 ### Others ###
 # Downloaded files
 downloads/
+static/
 
 # Custom log files
 *.log
