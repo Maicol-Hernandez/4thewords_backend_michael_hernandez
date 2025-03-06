@@ -8,6 +8,8 @@ Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionad
 
 ## Características
 
+![alt text](public/image.png)
+
 - **FastAPI** como framework principal.
 - **SQLModel** y **Alembic** para manejar la base de datos (migraciones, modelos).
 - **MySQL** como base de datos.
