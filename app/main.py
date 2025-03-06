@@ -17,10 +17,12 @@ app.add_middleware(
 
 # Mounts the "app/static" directory at the "/static" path
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/public", StaticFiles(directory="public"), name="public")
 
 # Include routers
 # app.include_router(heroes.router)
 app.include_router(legends.router, prefix="/api/v1")
+
 
 @app.on_event("startup")
 def on_startup():
