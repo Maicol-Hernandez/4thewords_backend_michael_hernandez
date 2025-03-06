@@ -1,10 +1,9 @@
-![alt text](/public/image.png)
-
 A continuación, un **ejemplo** de un archivo `README.md` para tu proyecto **FastAPI** con Docker Compose. Puedes ajustarlo según tu estructura real, variables de entorno y detalles de despliegue:
 
 ---
 
 # 4thewords Backend Michael Hernandez
+![Texto alternativo](./public/image.png)
 
 Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionado con **Alembic** para migraciones y contenedorizado mediante **Docker Compose**.
 
@@ -62,8 +61,8 @@ Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionad
 
 ## Uso
 
-- Una vez en ejecución, la API está disponible en [http://localhost:80](http://localhost:80).
-- La documentación interactiva de FastAPI (Swagger UI) se encuentra en [http://localhost:80/docs](http://localhost:80/docs).
+- Una vez en ejecución, la API está disponible en [http://localhost:8080](http://localhost:8080).
+- La documentación interactiva de FastAPI (Swagger UI) se encuentra en [http://localhost:8080/docs](http://localhost:8080/docs).
 - Para ver el estado de la aplicación:
   ```bash
   docker compose ps
@@ -128,7 +127,7 @@ Si necesitas ejecutar migraciones manualmente (por ejemplo, `alembic upgrade hea
 - `PUT /api/v1/legends/{id}` — actualizar una leyenda.
 - `DELETE /api/v1/legends/{id}` — eliminar una leyenda.
 
-Para más detalles, consulta [http://localhost:80/docs](http://localhost:80/docs) cuando el contenedor esté en marcha.
+Para más detalles, consulta [http://localhost:8080/docs](http://localhost:8080/docs) cuando el contenedor esté en marcha.
 
 ## Contribuciones
 
