@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 06-03-2025 a las 13:03:17
+-- Tiempo de generación: 06-03-2025 a las 13:34:59
 -- Versión del servidor: 8.0.32
 -- Versión de PHP: 8.2.8
 
@@ -63,15 +63,16 @@ CREATE TABLE `legends` (
 --
 
 INSERT INTO `legends` (`name`, `category`, `description`, `image_url`, `legend_date`, `province`, `canton`, `district`, `id`, `created_at`, `updated_at`) VALUES
-('La Llorona', 'Mito', 'Trágica historia de una mujer...', 'https://example.com/images/llorona.jpg', '2019-03-22', 'Cartago', 'Paraíso', 'La Unión', 3, '2025-03-05 00:00:00', '2025-03-05 13:31:30'),
-('El Chupacabras', 'Mito', 'Relato de una criatura que ataca animales de granja.', '/static/a6a0555e-39fd-4e77-873d-88c5d9d9af4d.png', '2025-03-06', 'Heredia', 'Barva', 'San Pablo', 4, '2025-03-05 00:00:00', '2025-03-06 12:15:42'),
-('La Siguanaba', 'Mito', 'Fantasma femenino que aparece en la noche...', 'https://example.com/images/siguanaba.jpg', '2021-11-11', 'San José', 'Desamparados', 'San Juan', 5, '2025-03-05 00:00:00', '2025-03-05 13:31:30'),
-('El Duende', 'Mito', 'Pequeño ser travieso...', 'https://example.com/images/duende.jpg', '2020-09-30', 'Guanacaste', 'Liberia', 'Nicoya', 6, '2025-03-05 00:00:00', '2025-03-05 13:31:30'),
-('La Llorona', 'Leyenda', '...', '/static/91cfd8e0-0ddc-444d-bf71-fe85cd8aa314.jpg', '2025-03-05', 'San José', 'Escazú', 'San Rafael', 11, '2025-03-06 07:55:57', '2025-03-06 07:55:57'),
-('La Llorona', 'Leyenda', '...blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla', '/static/e36cb73b-dc0b-405f-beee-4aebbe0cc190.jpg', '2025-03-06', 'San José', 'Escazú', 'San Rafael', 12, '2025-03-06 09:13:40', '2025-03-06 11:47:20'),
-('La Llorona', 'Leyenda', '...', '/static/652aa6fd-e67b-4cc6-9eb8-83ee2e7a2794.jpg', '2025-03-05', 'San José', 'Escazú', 'San Rafael', 13, '2025-03-06 09:13:43', '2025-03-06 09:13:43'),
-('La Llorona', 'Leyenda', '...ploploploploploploploploploploploploploploploploploploploploploploploplo', '/static/cff5eefc-75b1-4c1c-9594-8c94463ddc94.jpg', '2025-03-06', 'San José', 'Escazú', 'San Rafael', 14, '2025-03-06 09:14:37', '2025-03-06 12:10:30'),
-('Maicol Hernandez Peralta', 'ssssssssss', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '/static/09233e58-6190-4ed2-85a7-166906667fe5.jpg', '2025-03-06', 'Armenia Quindío', 'dsdsds', 'xxxxx', 15, '2025-03-06 09:55:19', '2025-03-06 09:55:19');
+('La Tulevieja', 'Mito', 'Leyenda sobre una mujer encantada que deambula por las noches.', '/public/1.jpeg', '2020-05-10', 'San José', 'Desamparados', 'San Miguel', 1, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('El Cadejos', 'Mito', 'Fábula sobre un perro demoníaco...', '/public/2.jpeg', '2021-07-15', 'Alajuela', 'San Ramón', 'Sarchí', 2, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('La Llorona', 'Mito', 'Trágica historia de una mujer...', '/public/3.jpeg', '2019-03-22', 'Cartago', 'Paraíso', 'La Unión', 3, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('El Chupacabras', 'Mito', 'Relato de una criatura que ataca animales de granja.', '/public/4.jpg', '2022-01-05', 'Heredia', 'Barva', 'San Pablo', 4, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('La Siguanaba', 'Mito', 'Fantasma femenino que aparece en la noche...', '/public/5.jpg', '2021-11-11', 'San José', 'Desamparados', 'San Juan', 5, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('El Duende', 'Mito', 'Pequeño ser travieso...', '/public/6.jpg', '2020-09-30', 'Guanacaste', 'Liberia', 'Nicoya', 6, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('La Ciguapa', 'Leyenda', 'Mujer misteriosa con pies al revés...', '/public/7.jpg', '2018-06-18', 'Puntarenas', 'Quepos', 'Parrita', 7, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('El Fantasma de la Carreta', 'Leyenda', 'Historia de un antiguo conductor...', '/public/8.jpg', '2017-12-12', 'San José', 'Alajuelita', 'San Isidro', 8, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('La Dama de Blanco', 'Leyenda', 'Figura espectral vestida de blanco...', '/public/9.jpg', '2020-02-29', 'Limón', 'Pococí', 'Guácimo', 9, '2025-03-06 00:00:00', '2025-03-06 13:24:46'),
+('El Gigante del Valle', 'Leyenda', 'Relato sobre un ser enorme...', '/public/10.jpg', '2019-08-08', 'San José', 'Escazú', 'San Rafael', 10, '2025-03-06 00:00:00', '2025-03-06 13:24:46');
 
 --
 -- Índices para tablas volcadas
@@ -88,8 +89,8 @@ ALTER TABLE `alembic_version`
 --
 ALTER TABLE `legends`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `ix_legends_category` (`category`),
-  ADD KEY `ix_legends_name` (`name`);
+  ADD KEY `ix_legends_name` (`name`),
+  ADD KEY `ix_legends_category` (`category`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -99,7 +100,7 @@ ALTER TABLE `legends`
 -- AUTO_INCREMENT de la tabla `legends`
 --
 ALTER TABLE `legends`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
