@@ -1,3 +1,5 @@
+![alt text](/public/image.png)
+
 A continuación, un **ejemplo** de un archivo `README.md` para tu proyecto **FastAPI** con Docker Compose. Puedes ajustarlo según tu estructura real, variables de entorno y detalles de despliegue:
 
 ---
@@ -8,7 +10,6 @@ Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionad
 
 ## Características
 
-![alt text](public/image.png)
 
 - **FastAPI** como framework principal.
 - **SQLModel** y **Alembic** para manejar la base de datos (migraciones, modelos).
