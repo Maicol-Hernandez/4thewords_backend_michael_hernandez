@@ -3,7 +3,7 @@ A continuación, un **ejemplo** de un archivo `README.md` para tu proyecto **Fas
 ---
 
 # 4thewords Backend Michael Hernandez
-![Texto alternativo](http://localhost:8080/public/image.png)
+![Texto alternativo](public/app.png)
 
 Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionado con **Alembic** para migraciones y contenedorizado mediante **Docker Compose**.
 
