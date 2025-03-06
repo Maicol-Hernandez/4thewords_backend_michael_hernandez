@@ -33,13 +33,20 @@ class LegendService:
 
         return query.all()
 
+    def get_legend(self, legend_id: int):
+        legend = self.session.get(Legend, legend_id)
+        if not legend:
+            raise HTTPException(status_code=404, detail="Legend not found")
+        return legend
+
     def update_legend(self, legend_id: int, legend_data: dict, image_url: str) -> Legend:
         legend = self.session.get(Legend, legend_id)
         if not legend:
             raise HTTPException(status_code=404, detail="Legend not found")
 
         old_image_url = legend.image_url
-        legend.image_url = image_url
+        if image_url is not None:
+            legend.image_url = image_url
 
         for key, value in legend_data.items():
             setattr(legend, key, value)
@@ -47,8 +54,6 @@ class LegendService:
         self.session.commit()
         self.session.refresh(legend)
 
-        # Elimina la imagen antigua
-        print("condicional", old_image_url and old_image_url != image_url)
         if old_image_url and old_image_url != image_url:
             self._delete_image(old_image_url)
 

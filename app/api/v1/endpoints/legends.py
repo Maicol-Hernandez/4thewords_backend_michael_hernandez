@@ -41,13 +41,27 @@ def get_legends(
     })
 
 
-@router.put("/{id}", response_model=LegendResponse)
-async def update_legend(id: int, legend_data: str = Form(...), image: UploadFile = File(...), db: Session = Depends(get_db)):
-    data = LegendCreate.model_validate_json(legend_data)
-
-    image_url = await save_uploaded_image(image)
+@router.get("/{id}", response_model=LegendResponse)
+def get_legend(id: int, db: Session = Depends(get_db)):
     service = LegendService(db)
 
+    return service.get_legend(id)
+
+
+@router.put("/{id}", response_model=LegendResponse)
+async def update_legend(
+    id: int,
+    legend_data: str = Form(...),
+    image: Optional[UploadFile] = File(None),
+    db: Session = Depends(get_db)
+):
+    data = LegendCreate.model_validate_json(legend_data)
+
+    image_url = None
+    if image is not None:
+        image_url = await save_uploaded_image(image)
+
+    service = LegendService(db)
     return service.update_legend(id, data.model_dump(), image_url)
 
 
