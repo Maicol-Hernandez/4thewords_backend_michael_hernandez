@@ -140,11 +140,3 @@ Para más detalles, consulta [http://localhost:8080/docs](http://localhost:8080/
 ## Licencia
 
 [MIT](LICENSE)
-
----
-
-Con este `README.md`, tu proyecto quedará documentado con:
-
-- **Pasos** para levantarlo con Docker Compose.
-- **Instrucciones** de uso y migraciones.
-- **Detalles** de endpoints y estructura.
