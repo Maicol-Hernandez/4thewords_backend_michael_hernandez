@@ -3,12 +3,12 @@ A continuación, un **ejemplo** de un archivo `README.md` para tu proyecto **Fas
 ---
 
 # 4thewords Backend Michael Hernandez
+
 ![Texto alternativo](public/app.png)
 
 Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionado con **Alembic** para migraciones y contenedorizado mediante **Docker Compose**.
 
 ## Características
-
 
 - **FastAPI** como framework principal.
 - **SQLModel** y **Alembic** para manejar la base de datos (migraciones, modelos).
@@ -32,26 +32,29 @@ Este proyecto es un backend construido con **FastAPI** y **SQLModel**, gestionad
    ```
 
 2. **Configurar** variables de entorno (opcional):
-   - Puedes usar un archivo `.env` en la raíz para definir variables como `DB_NAME`, `DB_USER`, `DB_PASSWORD`, etc.
+
+   - Puedes usar un archivo `.env` en la raíz para definir variables como `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, etc.
    - Ejemplo de `.env`:
      ```env
-     APP_NAME=fastapi
-     MYSQL_ROOT_PASSWORD=root
-     DB_NAME=4thewords_prueba_michael_hernandez
-     DB_USER=app_user
-     DB_PASSWORD=secret123
+     DB_CONNECTION=mysql
      DB_HOST=mysql
      DB_PORT=3306
+     DB_DATABASE=4thewords_prueba_michael_hernandez
+     DB_USERNAME=app_user
+     DB_PASSWORD=secret123
      ENVIRONMENT=dev
      RELOAD=1
      ```
 
 3. **Construir y levantar** los contenedores con Docker Compose:
+
    ```bash
    docker compose build
    docker compose up --build
    ```
+
    Esto:
+
    - Construye la imagen de la app (fastapi).
    - Inicia el contenedor de MySQL y el contenedor de la app.
 
@@ -88,8 +91,8 @@ Si necesitas ejecutar migraciones manualmente (por ejemplo, `alembic upgrade hea
 
 ## Semillas (Seeders)
 
-- Para insertar datos iniciales (leyendas, etc.), el proyecto cuenta con scripts o migraciones que hacen “seed” de la base de datos.  
-- Revisa la carpeta `seeders` o la migración correspondiente para detalles.  
+- Para insertar datos iniciales (leyendas, etc.), el proyecto cuenta con scripts o migraciones que hacen “seed” de la base de datos.
+- Revisa la carpeta `seeders` o la migración correspondiente para detalles.
 - Podrías correrlos en el contenedor, por ejemplo:
   ```bash
   docker compose exec fastapi-app python seeders/legend_seeder.py
